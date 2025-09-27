@@ -18,7 +18,7 @@ return (
   <section className="hero">
     <div className="hero-content">
       <h1>Welcome to Student Management System</h1>
-      <p>This is the landing page of your project 🚀</p>
+      <p>Connect. Collaborate. Achieve.</p>
       <button className="cta-btn">Get Started</button>
     </div>
   </section>
