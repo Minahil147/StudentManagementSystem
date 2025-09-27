@@ -1,0 +1,192 @@
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh; /* Ensures full viewport height */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scroll if proportions are off */
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: block; /* Ensures it behaves like a full-width block */
+}
+
+/* App Container (new: wraps all content for full-width control) */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #2c3e50;
+  color: #fff;
+  width: 100%; /* Explicit full width */
+  max-width: 100%; /* Prevents overflow */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f39c12;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 80vh;
+  background: linear-gradient(to right, #74ebd5, #9face6);
+  color: #1f1f1f;
+  padding: 20px;
+  width: 100%; /* Explicit full width for background */
+}
+
+.hero-content {
+  max-width: 800px; /* Centers content horizontally without squeezing */
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.cta-btn {
+  background: #2c3e50;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #f39c12;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* New: Better vertical centering if needed */
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 40px;
+  background: #fff;
+  width: 100%; /* Explicit full width */
+  max-width: 1200px; /* Caps width for better proportions on ultra-wide screens; centers implicitly */
+  margin: 0 auto; /* Centers the entire section if parent is wider */
+}
+
+.feature-card {
+  flex: 1 1 250px; /* Improved: Grows/shrinks but min 250px for proportions */
+  max-width: 300px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  text-align: center;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.feature-card img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #1f1f1f;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsive Tweaks (new: Fixes mobile/left-align issues) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+    flex-direction: column; /* Stacks logo and links on small screens */
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .hero {
+    height: 60vh; /* Shorter on mobile for better proportions */
+    padding: 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .features {
+    padding: 40px 20px;
+    gap: 20px;
+    flex-direction: column; /* Stacks cards vertically on mobile */
+  }
+
+  .feature-card {
+    max-width: 100%; /* Full width on mobile for better use of space */
+  }
+}
