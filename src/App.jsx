@@ -32,7 +32,17 @@ function App() {
   <li><a href="#about"><FaInfoCircle /> About</a></li>
 </ul>
 
-      </nav>
+</nav>
+
+{/* Hero Section */}
+<section className="hero">
+  <div className="hero-content">
+    <h1>Welcome to Student Management System</h1>
+    <p>Connect. Collaborate. Achieve.</p>
+    <button className="cta-btn">Get Started</button>
+  </div>
+</section>
+
 
       <section id="home" className="hero">
         <div className="hero-content">
