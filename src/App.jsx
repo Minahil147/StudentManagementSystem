@@ -1,48 +1,20 @@
-import "./App.css";
-import { FaHome, FaUserGraduate, FaInfoCircle } from "react-icons/fa";
-import { useState } from "react";
+import "./App.css"; 
 import StudentCard from "./components/StudentCard";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
+  const students = [
+    { name: "Minahil Fatima", roll: "2025-SE-01", course: "Software Engineering", department: "Computer Science", gender: "female" },
+    { name: "Ali Raza", roll: "2025-SE-02", course: "Software Engineering", department: "Computer Science", gender: "male" },
+    { name: "Ayesha Khan", roll: "2025-SE-03", course: "Data Science", department: "AI & DS", gender: "female" },
+    { name: "Ahmed Malik", roll: "2025-SE-04", course: "Cyber Security", department: "Information Security", gender: "male" },
+    { name: "Sara Ahmed", roll: "2025-SE-05", course: "Software Engineering", department: "Computer Science", gender: "female" },
+    { name: "Zara Ahmed", roll: "2025-SE-06", course: "Software Engineering", department: "Computer Science", gender: "female" },
+  ];
 
   return (
     <>
-      <nav className="navbar">
-       <ul className="nav-links">
-  <li><a href="#home"><FaHome /> Home</a></li>
-
-  <li className="dropdown">
-    <button onClick={toggleDropdown} className="dropdown-btn">
-      <FaUserGraduate /> Students
-    </button>
-    {showDropdown && (
-      <ul className="dropdown-menu">
-        <li><a href="#fees">Fee Structure</a></li>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#student-card">Student Card</a></li>
-      </ul>
-    )}
-  </li>
-
-  <li><a href="#about"><FaInfoCircle /> About</a></li>
-</ul>
-
-</nav>
-
-{/* Hero Section */}
-<section className="hero">
-  <div className="hero-content">
-    <h1>Welcome to Student Management System</h1>
-    <p>Connect. Collaborate. Achieve.</p>
-    <button className="cta-btn">Get Started</button>
-  </div>
-</section>
-
+      <Navbar />
 
       <section id="home" className="hero">
         <div className="hero-content">
@@ -72,17 +44,21 @@ function App() {
         </div>
       </section>
 
-<section id="student-card" className="student-card-section">
-  <h2 className="page-title">Student Card</h2>
-  <StudentCard 
-    name="Minahil Fatima" 
-    roll="2025-SE-01" 
-    course="Software Engineering" 
-    department="Computer Science" 
-  />
-</section>
-
-
+      <section id="student-card" className="student-card-section">
+        <h2 className="page-title">Student Cards</h2>
+        <div className="students-grid">
+          {students.map((student, index) => (
+            <StudentCard
+              key={index}
+              name={student.name}
+              roll={student.roll}
+              course={student.course}
+              department={student.department}
+              gender={student.gender}
+            />
+          ))}
+        </div>
+      </section>
 
       <section id="about" className="section">
         <h2>About</h2>
