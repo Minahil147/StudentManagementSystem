@@ -1,0 +1,81 @@
+/* AdminLogin.css */
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #5e3b2e, #b08968);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  background-color: #f5e6ca;
+  padding: 2.5rem 3rem;
+  border-radius: 20px;
+  width: 400px;
+  text-align: center;
+  color: #4e342e;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.auth-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.auth-container input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: 15px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container input:focus {
+  outline: none;
+  border: 2px solid #a47148;
+}
+
+.auth-container button {
+  background-color: #7b3f00;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-container button:hover {
+  background-color: #4e342e;
+}
+
+.auth-container p {
+  margin-top: 15px;
+  color: #3e2723;
+}
+
+.auth-container .link {
+  color: #6d4c41;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-container .link:hover {
+  text-decoration: underline;
+}

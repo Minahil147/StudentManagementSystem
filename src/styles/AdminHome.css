@@ -1,0 +1,120 @@
+/* AdminHome.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family:"Poppins", sans-serif;
+  background: #c0b093; 
+}
+.container {
+  width: 800px;
+  margin: 0 auto; 
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Welcome screen */
+.welcome-screen {
+  text-align: center;
+  padding: 410px;
+  background: #fff5eb;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-screen h1 {.admin-home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #d7ccc8, #efebe9);
+  font-family: "Poppins", sans-serif;
+  color: #4e342e;
+  text-align: center;
+}
+
+.admin-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
+  color: #3e2723;
+}
+
+.admin-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.card-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-card {
+  background: #f5f0ec;
+  border-radius: 20px;
+  width: 200px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(78, 52, 46, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 2rem;
+}
+
+.home-card h3 {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #3e2723;
+}
+
+.home-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(78, 52, 46, 0.3);
+  background: #efebe9;
+}
+
+  color: #4e342e;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+.dashboard-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dashboard-buttons button {
+  background: #8b5e3b;
+  color: #fff;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.dashboard-buttons button:hover {
+  background: #5b3a28;
+  transform: translateY(-4px);
+}
+

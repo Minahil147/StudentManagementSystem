@@ -1,0 +1,118 @@
+/* Card layout for student list */
+.students-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.student-card {
+  background-color: #f5e6ca;
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.student-card:hover {
+  background-color: #f0dcb5;
+  transform: scale(1.01);
+}
+.student-card div:first-child {
+  flex: 1;
+  text-align: left;
+}
+.student-card h3 {
+  color: #4e342e;
+  margin: 0;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.card-buttons button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #7b3f00;
+  color: white;
+  transition: 0.3s;
+}
+
+.card-buttons button:hover {
+  background-color: #4e342e;
+}
+/* Popup View Modal */
+.view-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.view-card {
+  background: #fdf3e7;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 340px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: popIn 0.3s ease-in-out;
+}
+
+.view-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #8d6e63;
+}
+
+.close-btn {
+  background-color: #6d4c41;
+  color: #fff;
+  border: none;
+  margin-top: 1rem;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background-color: #4e342e;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.student-card.list-mode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f5e6d3;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}

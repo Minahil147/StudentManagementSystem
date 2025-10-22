@@ -1,50 +1,25 @@
-import "./Navbar.css";
-import logo from "../assets/logo.png";
-import { useState, useEffect } from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/Navbar.css";
 
-function Navbar() {
-  const [darkMode, setDarkMode] = useState(false);
-  const location = useLocation();
+function Navbar({ setCurrentPage }) {
+  const navigate = useNavigate();
 
-  // 🔹 Add/remove dark class on <body>
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark");
-      document.body.classList.remove("light");
-    } else {
-      document.body.classList.add("light");
-      document.body.classList.remove("dark");
-    }
-  }, [darkMode]);
-
-  const toggleMode = () => {
-    setDarkMode(!darkMode);
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    navigate("/admin-login");
   };
 
   return (
-    <nav className={`navbar ${darkMode ? "dark" : "light"}`}>
-      {/* Logo */}
-      <div className="logo">
-        <img src={logo} alt="StudentMS Logo" />
-        <span>StudentMS</span>
-      </div>
-
-      {/* Links */}
+    <nav className="navbar">
+      <div className="logo" onClick={() => setCurrentPage("welcome")}>StudentMS</div>
       <ul className="nav-links">
-        <li><Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link></li>
-        <li><Link to="/students" className={location.pathname === "/students" ? "active" : ""}>Students</Link></li>
-        <li><Link to="/about" className={location.pathname === "/about" ? "active" : ""}>About</Link></li>
-        <li><Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>Contact</Link></li>
-        <li><Link to="/add-student">Add Student</Link></li>
-
+        <li><a onClick={() => setCurrentPage("welcome")}>Home</a></li>
+        <li><a onClick={() => setCurrentPage("register")}>Register</a></li>
+        <li><a onClick={() => setCurrentPage("students")}>Students</a></li>
+        <li><a onClick={() => setCurrentPage("cgpa")}>CGPA</a></li>
+        <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
       </ul>
-
-      {/* Toggle button */}
-      <button className="mode-toggle" onClick={toggleMode}>
-        {darkMode ? <FaMoon /> : <FaSun />}
-      </button>
     </nav>
   );
 }
