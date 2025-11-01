@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles/AdminLogin.css";
 
 function AdminLogin() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -11,27 +13,30 @@ function AdminLogin() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    const savedAdmin = JSON.parse(localStorage.getItem("adminData"));
+    try {
+      const res = await axios.post("http://localhost:5000/api/admin/login", formData);
 
-    if (
-      savedAdmin &&
-      formData.email === savedAdmin.email &&
-      formData.password === savedAdmin.password
-    ) {
-      // ✅ Set login flag
+      // Save admin username
+      localStorage.setItem("adminUsername", res.data.admin.username);
+
+      // Mark as logged in
       localStorage.setItem("isLoggedIn", "true");
-      alert("Login successful!");
 
-      // 🧩 Small delay for App.jsx to react
-      setTimeout(() => {
-        navigate("/");
-        window.location.reload(); // force re-render to show AdminHome
-      }, 100);
-    } else {
-      alert("Invalid email or password!");
+      // Trigger App state update (because App listens to storage events)
+      window.dispatchEvent(new Event("storage"));
+
+      alert("Login successful ✅");
+
+      // Navigate to home page
+      navigate("/");
+    } catch (err) {
+      alert(err.response?.data?.message || "Login failed ❌");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,10 +45,10 @@ function AdminLogin() {
       <h2>Admin Login</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
           onChange={handleChange}
           required
         />
@@ -57,14 +62,10 @@ function AdminLogin() {
           required
         />
 
-        <button type="submit">Login</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
       </form>
-      <p>
-        Don’t have an account?{" "}
-        <span className="link" onClick={() => navigate("/admin-signup")}>
-          Sign Up
-        </span>
-      </p>
     </div>
   );
 }

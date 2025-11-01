@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../styles/Register.css"; // keep your old coffee style
+import "../styles/Register.css"; 
 
 function AddStudent() {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ function AddStudent() {
     rollNo: "",
     cgpa: "",
     department: "",
-    image: "" // will hold base64 image string
+    image: "" 
   });
 
   const handleChange = (e) => {
@@ -16,7 +16,6 @@ function AddStudent() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // handle image file upload
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {

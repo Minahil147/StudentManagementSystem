@@ -11,15 +11,12 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
-  // ✅ Use state so UI reacts immediately when storage changes
   const [adminExists, setAdminExists] = useState(
     localStorage.getItem("adminData") !== null
   );
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
   );
-
-  // Listen for changes in localStorage (e.g., after signup/login)
   useEffect(() => {
     const handleStorageChange = () => {
       setAdminExists(localStorage.getItem("adminData") !== null);
@@ -31,7 +28,6 @@ function App() {
 
   return (
     <Routes>
-      {/* 1️⃣ Signup - when no admin exists */}
       {!adminExists && (
         <>
           <Route path="/admin-signup" element={<AdminSignup />} />
@@ -39,7 +35,6 @@ function App() {
         </>
       )}
 
-      {/* 2️⃣ Login - when admin exists but not logged in */}
       {adminExists && !isLoggedIn && (
         <>
           <Route path="/admin-login" element={<AdminLogin />} />
@@ -47,7 +42,6 @@ function App() {
         </>
       )}
 
-      {/* 3️⃣ Home - when logged in */}
       {isLoggedIn && (
         <>
           <Route

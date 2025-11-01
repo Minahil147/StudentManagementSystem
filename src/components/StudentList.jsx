@@ -19,20 +19,27 @@ function StudentList() {
     fetchStudents();
   }, []);
 
+  // ✅ Fetch all students
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/students");
+      const res = await axios.get("http://localhost:5000/api/students/");
       setStudents(res.data);
     } catch (err) {
       console.error("Failed to fetch students", err);
     }
   };
 
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/students/${id}`);
-    setStudents(students.filter((s) => s.id !== id));
+  // ✅ Delete a student
+  const handleDelete = async (_id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/students/delete/${_id}`);
+      setStudents(students.filter((s) => s._id !== _id));
+    } catch (err) {
+      console.error("Failed to delete student", err);
+    }
   };
 
+  // ✅ Edit student - open modal
   const handleEdit = (student) => {
     setEditingStudent(student);
     setFormData({
@@ -49,23 +56,31 @@ function StudentList() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ Update student
   const handleUpdate = async () => {
-    await axios.put(`http://localhost:5000/students/${editingStudent.id}`, formData);
-    setEditingStudent(null);
-    fetchStudents();
+    try {
+      await axios.put(
+        `http://localhost:5000/api/students/update/${editingStudent._id}`,
+        formData
+      );
+      setEditingStudent(null);
+      fetchStudents();
+    } catch (err) {
+      console.error("Failed to update student", err);
+    }
   };
 
   return (
     <div className="students-container">
       <h2>Student List</h2>
 
-      {/* Student cards in list view */}
+      {/* Student cards */}
       <div className="students-list">
         {students.length === 0 ? (
           <p style={{ textAlign: "center", color: "#4e342e" }}>No students found!</p>
         ) : (
           students.map((s) => (
-            <div key={s.id} className="student-card list-mode">
+            <div key={s._id} className="student-card list-mode">
               <div className="student-basic">
                 <h3>{s.name}</h3>
                 <p><strong>Roll No:</strong> {s.rollNo}</p>
@@ -73,7 +88,7 @@ function StudentList() {
               <div className="card-buttons">
                 <button onClick={() => setViewingStudent(s)}>View</button>
                 <button onClick={() => handleEdit(s)}>Edit</button>
-                <button onClick={() => handleDelete(s.id)}>Delete</button>
+                <button onClick={() => handleDelete(s._id)}>Delete</button>
               </div>
             </div>
           ))
